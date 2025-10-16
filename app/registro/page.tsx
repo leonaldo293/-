@@ -20,7 +20,7 @@ function RegisterForm() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [role, setRole] = useState<UserRole>("donor")
+  const [role, setRole] = useState<UserRole>("doador")
   const [isLoading, setIsLoading] = useState(false)
   const { register } = useAuth()
   const router = useRouter()
@@ -33,14 +33,14 @@ function RegisterForm() {
     try {
       await register(name, email, password, role)
       toast({
-        title: "Account created successfully!",
-        description: "Welcome to Food Share. Let's start making a difference!",
+        title: "Conta criada com sucesso!",
+        description: "Bem-vindo ao Food Share. Vamos começar a fazer a diferença!",
       })
       router.push("/dashboard")
     } catch (error) {
       toast({
-        title: "Error creating account",
-        description: "Please try again later.",
+        title: "Erro ao criar conta",
+        description: "Tente novamente mais tarde.",
         variant: "destructive",
       })
     } finally {
@@ -58,17 +58,17 @@ function RegisterForm() {
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
               <Heart className="h-7 w-7 text-primary-foreground fill-current" />
             </div>
-            <CardTitle className="text-2xl font-bold">Create account on Food Share</CardTitle>
-            <CardDescription>Join us in the fight against hunger and food waste</CardDescription>
+            <CardTitle className="text-2xl font-bold">Criar conta no Food Share</CardTitle>
+            <CardDescription>Junte-se a nós no combate à fome e desperdício de alimentos</CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Full name</Label>
+                <Label htmlFor="name">Nome completo</Label>
                 <Input
                   id="name"
                   type="text"
-                  placeholder="John Smith"
+                  placeholder="João Silva"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -76,11 +76,11 @@ function RegisterForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">E-mail</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="seu@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -88,7 +88,7 @@ function RegisterForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Senha</Label>
                 <Input
                   id="password"
                   type="password"
@@ -101,18 +101,18 @@ function RegisterForm() {
                 />
               </div>
               <div className="space-y-3">
-                <Label>Account type</Label>
+                <Label>Tipo de conta</Label>
                 <RadioGroup value={role} onValueChange={(value) => setRole(value as UserRole)} disabled={isLoading}>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="donor" id="donor" />
-                    <Label htmlFor="donor" className="font-normal cursor-pointer">
-                      Donor (Individual, restaurant or supermarket)
+                    <RadioGroupItem value="doador" id="doador" />
+                    <Label htmlFor="doador" className="font-normal cursor-pointer">
+                      Doador (Pessoa física, restaurante ou supermercado)
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="shelter" id="shelter" />
-                    <Label htmlFor="shelter" className="font-normal cursor-pointer">
-                      Shelter or NGO (Receive donations)
+                    <RadioGroupItem value="abrigo" id="abrigo" />
+                    <Label htmlFor="abrigo" className="font-normal cursor-pointer">
+                      Abrigo ou ONG (Receber doações)
                     </Label>
                   </div>
                 </RadioGroup>
@@ -123,16 +123,16 @@ function RegisterForm() {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating account...
+                    Criando conta...
                   </>
                 ) : (
-                  "Create free account"
+                  "Criar conta gratuita"
                 )}
               </Button>
               <p className="text-center text-sm text-muted-foreground">
-                Already have an account?{" "}
+                Já tem uma conta?{" "}
                 <Link href="/login" className="text-primary hover:underline font-medium">
-                  Sign in
+                  Faça login
                 </Link>
               </p>
             </CardFooter>

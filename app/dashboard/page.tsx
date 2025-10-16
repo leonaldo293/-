@@ -26,15 +26,15 @@ function DashboardContent() {
 
   // Filter donations based on user role
   const userDonations =
-    user.role === "donor"
+    user.role === "doador"
       ? mockDonations.filter((d) => d.donorId === user.id)
-      : mockDonations.filter((d) => d.reservedBy === user.name || d.status === "available")
+      : mockDonations.filter((d) => d.reservedBy === user.name || d.status === "disponivel")
 
   const stats = {
-    totalDonations: user.role === "donor" ? 12 : 8,
-    activeDonations: user.role === "donor" ? 5 : 3,
-    completedDonations: user.role === "donor" ? 7 : 5,
-    impactedPeople: user.role === "donor" ? 156 : 89,
+    totalDonations: user.role === "doador" ? 12 : 8,
+    activeDonations: user.role === "doador" ? 5 : 3,
+    completedDonations: user.role === "doador" ? 7 : 5,
+    impactedPeople: user.role === "doador" ? 156 : 89,
   }
 
   return (
@@ -46,11 +46,11 @@ function DashboardContent() {
           {/* Welcome Section */}
           <div className="mb-8 flex items-start justify-between">
             <div>
-              <h1 className="text-4xl font-bold text-balance mb-2">Hello, {user.name.split(" ")[0]}!</h1>
+              <h1 className="text-4xl font-bold text-balance mb-2">Olá, {user.name.split(" ")[0]}!</h1>
               <p className="text-lg text-muted-foreground">
-                {user.role === "donor"
-                  ? "Manage your donations and see the impact you're making"
-                  : "See available donations and manage your reservations"}
+                {user.role === "doador"
+                  ? "Gerencie suas doações e veja o impacto que você está causando"
+                  : "Veja as doações disponíveis e gerencie suas reservas"}
               </p>
             </div>
             <Avatar className="h-16 w-16">
@@ -64,50 +64,50 @@ function DashboardContent() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
-                  {user.role === "donor" ? "Total Donations" : "Received Donations"}
+                  {user.role === "doador" ? "Total de Doações" : "Doações Recebidas"}
                 </CardTitle>
                 <Package className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{stats.totalDonations}</div>
-                <p className="text-xs text-muted-foreground">+2 since last month</p>
+                <p className="text-xs text-muted-foreground">+2 desde o último mês</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
-                  {user.role === "donor" ? "Active Donations" : "Active Reservations"}
+                  {user.role === "doador" ? "Doações Ativas" : "Reservas Ativas"}
                 </CardTitle>
                 <Heart className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{stats.activeDonations}</div>
-                <p className="text-xs text-muted-foreground">Awaiting collection</p>
+                <p className="text-xs text-muted-foreground">Aguardando coleta</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
-                  {user.role === "donor" ? "Completed Donations" : "Completed Collections"}
+                  {user.role === "doador" ? "Doações Concluídas" : "Coletas Realizadas"}
                 </CardTitle>
                 <TrendingUp className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{stats.completedDonations}</div>
-                <p className="text-xs text-muted-foreground">+58% since start</p>
+                <p className="text-xs text-muted-foreground">+58% desde o início</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Impacted People</CardTitle>
+                <CardTitle className="text-sm font-medium">Pessoas Impactadas</CardTitle>
                 <Users className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{stats.impactedPeople}</div>
-                <p className="text-xs text-muted-foreground">Estimate based on donations</p>
+                <p className="text-xs text-muted-foreground">Estimativa baseada nas doações</p>
               </CardContent>
             </Card>
           </div>
@@ -119,21 +119,21 @@ function DashboardContent() {
               <Tabs defaultValue="active" className="w-full">
                 <div className="flex items-center justify-between mb-4">
                   <TabsList>
-                    <TabsTrigger value="active">{user.role === "donor" ? "Active" : "Available"}</TabsTrigger>
+                    <TabsTrigger value="active">{user.role === "doador" ? "Ativas" : "Disponíveis"}</TabsTrigger>
                     <TabsTrigger value="completed">
-                      {user.role === "donor" ? "Completed" : "My Reservations"}
+                      {user.role === "doador" ? "Concluídas" : "Minhas Reservas"}
                     </TabsTrigger>
                   </TabsList>
-                  {user.role === "donor" && (
+                  {user.role === "doador" && (
                     <Button asChild>
-                      <Link href="/donations/new">New Donation</Link>
+                      <Link href="/doacoes/nova">Nova Doação</Link>
                     </Button>
                   )}
                 </div>
 
                 <TabsContent value="active" className="space-y-4">
                   {userDonations
-                    .filter((d) => (user.role === "donor" ? d.status !== "collected" : d.status === "available"))
+                    .filter((d) => (user.role === "doador" ? d.status !== "coletado" : d.status === "disponivel"))
                     .slice(0, 5)
                     .map((donation) => (
                       <Card key={donation.id}>
@@ -151,8 +151,8 @@ function DashboardContent() {
                             <div className="flex-1 min-w-0">
                               <div className="flex items-start justify-between gap-2 mb-2">
                                 <h3 className="font-semibold text-balance">{donation.title}</h3>
-                                <Badge variant={donation.status === "available" ? "default" : "secondary"}>
-                                  {donation.status === "available" ? "Available" : "Reserved"}
+                                <Badge variant={donation.status === "disponivel" ? "default" : "secondary"}>
+                                  {donation.status === "disponivel" ? "Disponível" : "Reservado"}
                                 </Badge>
                               </div>
                               <div className="space-y-1 text-sm text-muted-foreground">
@@ -162,7 +162,7 @@ function DashboardContent() {
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <Calendar className="h-3 w-3" />
-                                  <span>Expiry: {new Date(donation.expiryDate).toLocaleDateString("en-US")}</span>
+                                  <span>Validade: {new Date(donation.expiryDate).toLocaleDateString("pt-BR")}</span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <Package className="h-3 w-3" />
@@ -171,9 +171,9 @@ function DashboardContent() {
                               </div>
                               <div className="flex gap-2 mt-3">
                                 <Button size="sm" variant="outline" asChild>
-                                  <Link href={`/donations/${donation.id}`}>View Details</Link>
+                                  <Link href={`/doacoes/${donation.id}`}>Ver Detalhes</Link>
                                 </Button>
-                                {user.role === "donor" && (
+                                {user.role === "doador" && (
                                   <>
                                     <Button size="sm" variant="ghost">
                                       <Edit className="h-4 w-4" />
@@ -193,7 +193,7 @@ function DashboardContent() {
 
                 <TabsContent value="completed" className="space-y-4">
                   {userDonations
-                    .filter((d) => (user.role === "donor" ? d.status === "collected" : d.reservedBy === user.name))
+                    .filter((d) => (user.role === "doador" ? d.status === "coletado" : d.reservedBy === user.name))
                     .slice(0, 5)
                     .map((donation) => (
                       <Card key={donation.id}>
@@ -211,7 +211,7 @@ function DashboardContent() {
                             <div className="flex-1 min-w-0">
                               <div className="flex items-start justify-between gap-2 mb-2">
                                 <h3 className="font-semibold text-balance">{donation.title}</h3>
-                                <Badge variant="outline">{user.role === "donor" ? "Collected" : "Reserved"}</Badge>
+                                <Badge variant="outline">{user.role === "doador" ? "Coletado" : "Reservado"}</Badge>
                               </div>
                               <div className="space-y-1 text-sm text-muted-foreground">
                                 <div className="flex items-center gap-1">
@@ -237,7 +237,7 @@ function DashboardContent() {
               {/* Profile Card */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Your Profile</CardTitle>
+                  <CardTitle>Seu Perfil</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-3">
@@ -251,17 +251,17 @@ function DashboardContent() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Account type</p>
+                    <p className="text-sm text-muted-foreground mb-1">Tipo de conta</p>
                     <Badge variant="secondary" className="capitalize">
-                      {user.role === "donor" ? "Donor" : "Shelter/NGO"}
+                      {user.role === "doador" ? "Doador" : "Abrigo/ONG"}
                     </Badge>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Location</p>
-                    <p className="text-sm">{user.location || "Not informed"}</p>
+                    <p className="text-sm text-muted-foreground mb-1">Localização</p>
+                    <p className="text-sm">{user.location || "Não informado"}</p>
                   </div>
                   <Button variant="outline" className="w-full bg-transparent" asChild>
-                    <Link href="/profile">Edit Profile</Link>
+                    <Link href="/perfil">Editar Perfil</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -269,30 +269,30 @@ function DashboardContent() {
               {/* Impact Card */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Your Impact</CardTitle>
+                  <CardTitle>Seu Impacto</CardTitle>
                   <CardDescription>
-                    {user.role === "donor" ? "See the difference you're making" : "Food received this month"}
+                    {user.role === "doador" ? "Veja a diferença que você está fazendo" : "Alimentos recebidos este mês"}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium">Monthly Goal</span>
+                      <span className="text-sm font-medium">Meta Mensal</span>
                       <span className="text-sm text-muted-foreground">75%</span>
                     </div>
                     <Progress value={75} className="h-2" />
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">Kg donated</span>
+                      <span className="text-muted-foreground">Kg doados</span>
                       <span className="font-medium">127kg</span>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">Estimated meals</span>
+                      <span className="text-muted-foreground">Refeições estimadas</span>
                       <span className="font-medium">423</span>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">CO₂ saved</span>
+                      <span className="text-muted-foreground">CO₂ economizado</span>
                       <span className="font-medium">89kg</span>
                     </div>
                   </div>
@@ -302,36 +302,36 @@ function DashboardContent() {
               {/* Quick Actions */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Quick Actions</CardTitle>
+                  <CardTitle>Ações Rápidas</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  {user.role === "donor" ? (
+                  {user.role === "doador" ? (
                     <>
                       <Button variant="outline" className="w-full justify-start bg-transparent" asChild>
-                        <Link href="/donations/new">
+                        <Link href="/doacoes/nova">
                           <Package className="mr-2 h-4 w-4" />
-                          New Donation
+                          Nova Doação
                         </Link>
                       </Button>
                       <Button variant="outline" className="w-full justify-start bg-transparent" asChild>
-                        <Link href="/donations">
+                        <Link href="/doacoes">
                           <Heart className="mr-2 h-4 w-4" />
-                          View All Donations
+                          Ver Todas Doações
                         </Link>
                       </Button>
                     </>
                   ) : (
                     <>
                       <Button variant="outline" className="w-full justify-start bg-transparent" asChild>
-                        <Link href="/donations">
+                        <Link href="/doacoes">
                           <Package className="mr-2 h-4 w-4" />
-                          Search Donations
+                          Buscar Doações
                         </Link>
                       </Button>
                       <Button variant="outline" className="w-full justify-start bg-transparent" asChild>
                         <Link href="/dashboard">
                           <Heart className="mr-2 h-4 w-4" />
-                          My Reservations
+                          Minhas Reservas
                         </Link>
                       </Button>
                     </>

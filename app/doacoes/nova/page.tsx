@@ -42,15 +42,15 @@ function NewDonationForm() {
       await new Promise((resolve) => setTimeout(resolve, 1500))
 
       toast({
-        title: "Donation created successfully!",
-        description: "Your donation has been published and is available for reservation.",
+        title: "Doação criada com sucesso!",
+        description: "Sua doação foi publicada e está disponível para reserva.",
       })
 
-      router.push("/donations")
+      router.push("/doacoes")
     } catch (error) {
       toast({
-        title: "Error creating donation",
-        description: "Please try again later.",
+        title: "Erro ao criar doação",
+        description: "Tente novamente mais tarde.",
         variant: "destructive",
       })
     } finally {
@@ -69,12 +69,12 @@ function NewDonationForm() {
         <main className="flex-1 flex items-center justify-center py-12 px-4">
           <Card className="max-w-md">
             <CardHeader>
-              <CardTitle>Restricted Access</CardTitle>
-              <CardDescription>You need to be logged in to create a donation.</CardDescription>
+              <CardTitle>Acesso Restrito</CardTitle>
+              <CardDescription>Você precisa estar logado para criar uma doação.</CardDescription>
             </CardHeader>
             <CardContent>
               <Button asChild className="w-full">
-                <Link href="/login">Login</Link>
+                <Link href="/login">Fazer Login</Link>
               </Button>
             </CardContent>
           </Card>
@@ -91,24 +91,24 @@ function NewDonationForm() {
       <main className="flex-1 py-12 px-4">
         <div className="container mx-auto max-w-2xl">
           <Button variant="ghost" asChild className="mb-6">
-            <Link href="/donations">
+            <Link href="/doacoes">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to donations
+              Voltar para doações
             </Link>
           </Button>
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">New Donation</CardTitle>
-              <CardDescription>Fill in the details of your food donation</CardDescription>
+              <CardTitle className="text-2xl">Nova Doação</CardTitle>
+              <CardDescription>Preencha os detalhes da sua doação de alimentos</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="title">Donation Title *</Label>
+                  <Label htmlFor="title">Título da Doação *</Label>
                   <Input
                     id="title"
-                    placeholder="Ex: Assorted Fresh Fruits"
+                    placeholder="Ex: Frutas Frescas Variadas"
                     value={formData.title}
                     onChange={(e) => handleChange("title", e.target.value)}
                     required
@@ -118,7 +118,7 @@ function NewDonationForm() {
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="category">Category *</Label>
+                    <Label htmlFor="category">Categoria *</Label>
                     <Select
                       value={formData.category}
                       onValueChange={(value) => handleChange("category", value)}
@@ -126,25 +126,25 @@ function NewDonationForm() {
                       required
                     >
                       <SelectTrigger id="category">
-                        <SelectValue placeholder="Select a category" />
+                        <SelectValue placeholder="Selecione uma categoria" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="fruits">Fruits</SelectItem>
-                        <SelectItem value="vegetables">Vegetables</SelectItem>
-                        <SelectItem value="grains">Grains</SelectItem>
-                        <SelectItem value="dairy">Dairy</SelectItem>
-                        <SelectItem value="proteins">Proteins</SelectItem>
-                        <SelectItem value="bakery">Bakery</SelectItem>
-                        <SelectItem value="others">Others</SelectItem>
+                        <SelectItem value="frutas">Frutas</SelectItem>
+                        <SelectItem value="vegetais">Vegetais</SelectItem>
+                        <SelectItem value="graos">Grãos</SelectItem>
+                        <SelectItem value="laticinios">Laticínios</SelectItem>
+                        <SelectItem value="proteinas">Proteínas</SelectItem>
+                        <SelectItem value="padaria">Padaria</SelectItem>
+                        <SelectItem value="outros">Outros</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="quantity">Quantity *</Label>
+                    <Label htmlFor="quantity">Quantidade *</Label>
                     <Input
                       id="quantity"
-                      placeholder="Ex: 5kg or 20 units"
+                      placeholder="Ex: 5kg ou 20 unidades"
                       value={formData.quantity}
                       onChange={(e) => handleChange("quantity", e.target.value)}
                       required
@@ -154,7 +154,7 @@ function NewDonationForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="expiryDate">Expiry Date *</Label>
+                  <Label htmlFor="expiryDate">Data de Validade *</Label>
                   <Input
                     id="expiryDate"
                     type="date"
@@ -167,10 +167,10 @@ function NewDonationForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="location">Location *</Label>
+                  <Label htmlFor="location">Localização *</Label>
                   <Input
                     id="location"
-                    placeholder="Ex: Flower Street, 123 - São Paulo, SP"
+                    placeholder="Ex: Rua das Flores, 123 - São Paulo, SP"
                     value={formData.location}
                     onChange={(e) => handleChange("location", e.target.value)}
                     required
@@ -179,10 +179,10 @@ function NewDonationForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">Description (optional)</Label>
+                  <Label htmlFor="description">Descrição (opcional)</Label>
                   <Textarea
                     id="description"
-                    placeholder="Add additional information about the donation..."
+                    placeholder="Adicione informações adicionais sobre a doação..."
                     value={formData.description}
                     onChange={(e) => handleChange("description", e.target.value)}
                     disabled={isLoading}
@@ -198,16 +198,16 @@ function NewDonationForm() {
                     className="flex-1 bg-transparent"
                     disabled={isLoading}
                   >
-                    <Link href="/donations">Cancel</Link>
+                    <Link href="/doacoes">Cancelar</Link>
                   </Button>
                   <Button type="submit" className="flex-1" disabled={isLoading}>
                     {isLoading ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Creating...
+                        Criando...
                       </>
                     ) : (
-                      "Create Donation"
+                      "Criar Doação"
                     )}
                   </Button>
                 </div>

@@ -14,7 +14,7 @@ import Link from "next/link"
 
 export default function MapPage() {
   const [selectedDonation, setSelectedDonation] = useState<Donation | null>(null)
-  const [categoryFilter, setCategoryFilter] = useState<string>("all")
+  const [categoryFilter, setCategoryFilter] = useState<string>("todas")
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null)
   const [viewMode, setViewMode] = useState<"map" | "list">("map")
 
@@ -41,8 +41,8 @@ export default function MapPage() {
   }, [])
 
   const filteredDonations = mockDonations.filter((donation) => {
-    const matchesCategory = categoryFilter === "all" || donation.category === categoryFilter
-    const matchesStatus = donation.status === "available"
+    const matchesCategory = categoryFilter === "todas" || donation.category === categoryFilter
+    const matchesStatus = donation.status === "disponivel"
     return matchesCategory && matchesStatus
   })
 
@@ -85,15 +85,15 @@ export default function MapPage() {
                 <div className="text-center space-y-4 p-8">
                   <MapPin className="h-16 w-16 text-primary mx-auto" />
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Map View</h3>
+                    <h3 className="text-xl font-semibold mb-2">Visualização do Mapa</h3>
                     <p className="text-muted-foreground text-pretty max-w-md">
-                      Here would be displayed an interactive map with donations near you. In production, we would integrate
-                      with Google Maps, Mapbox or Leaflet.
+                      Aqui seria exibido um mapa interativo com as doações próximas a você. Em produção, integraríamos
+                      com Google Maps, Mapbox ou Leaflet.
                     </p>
                   </div>
                   {userLocation && (
                     <div className="text-sm text-muted-foreground">
-                      Your location: {userLocation.lat.toFixed(4)}, {userLocation.lng.toFixed(4)}
+                      Sua localização: {userLocation.lat.toFixed(4)}, {userLocation.lng.toFixed(4)}
                     </div>
                   )}
                 </div>
@@ -173,7 +173,7 @@ export default function MapPage() {
                         </div>
                       </div>
                       <Button asChild className="w-full">
-                        <Link href={`/donations/${selectedDonation.id}`}>View Details</Link>
+                        <Link href={`/doacoes/${selectedDonation.id}`}>Ver Detalhes</Link>
                       </Button>
                     </CardContent>
                   </Card>
@@ -186,9 +186,9 @@ export default function MapPage() {
               <div className="p-6 space-y-6">
                 {/* Header */}
                 <div>
-                  <h2 className="text-2xl font-bold mb-2">Nearby Donations</h2>
+                  <h2 className="text-2xl font-bold mb-2">Doações Próximas</h2>
                   <p className="text-sm text-muted-foreground">
-                    {sortedDonations.length} donations available in your region
+                    {sortedDonations.length} doações disponíveis na sua região
                   </p>
                 </div>
 
@@ -196,17 +196,17 @@ export default function MapPage() {
                 <div className="space-y-3">
                   <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Category" />
+                      <SelectValue placeholder="Categoria" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">All categories</SelectItem>
-                      <SelectItem value="fruits">Fruits</SelectItem>
-                      <SelectItem value="vegetables">Vegetables</SelectItem>
-                      <SelectItem value="grains">Grains</SelectItem>
-                      <SelectItem value="dairy">Dairy</SelectItem>
-                      <SelectItem value="proteins">Proteins</SelectItem>
-                      <SelectItem value="bakery">Bakery</SelectItem>
-                      <SelectItem value="others">Others</SelectItem>
+                      <SelectItem value="todas">Todas as categorias</SelectItem>
+                      <SelectItem value="frutas">Frutas</SelectItem>
+                      <SelectItem value="vegetais">Vegetais</SelectItem>
+                      <SelectItem value="graos">Grãos</SelectItem>
+                      <SelectItem value="laticinios">Laticínios</SelectItem>
+                      <SelectItem value="proteinas">Proteínas</SelectItem>
+                      <SelectItem value="padaria">Padaria</SelectItem>
+                      <SelectItem value="outros">Outros</SelectItem>
                     </SelectContent>
                   </Select>
 
@@ -225,7 +225,7 @@ export default function MapPage() {
                     }}
                   >
                     <Navigation className="mr-2 h-4 w-4" />
-                    Update Location
+                    Atualizar Localização
                   </Button>
                 </div>
 
@@ -254,7 +254,7 @@ export default function MapPage() {
                             <div className="space-y-1 text-xs text-muted-foreground">
                               <div className="flex items-center gap-1">
                                 <Navigation className="h-3 w-3" />
-                                <span>{donation.distance.toFixed(1)} km away</span>
+                                <span>{donation.distance.toFixed(1)} km de distância</span>
                               </div>
                               <div className="flex items-center gap-1">
                                 <Package className="h-3 w-3" />
@@ -262,7 +262,7 @@ export default function MapPage() {
                               </div>
                               <div className="flex items-center gap-1">
                                 <Calendar className="h-3 w-3" />
-                                <span>Expiry: {new Date(donation.expiryDate).toLocaleDateString("en-US")}</span>
+                                <span>Validade: {new Date(donation.expiryDate).toLocaleDateString("pt-BR")}</span>
                               </div>
                             </div>
                           </div>
@@ -277,7 +277,7 @@ export default function MapPage() {
                     <CardContent className="p-8 text-center">
                       <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
                       <p className="text-sm text-muted-foreground">
-                        No donations available with the selected filters
+                        Nenhuma doação disponível com os filtros selecionados
                       </p>
                     </CardContent>
                   </Card>

@@ -20,28 +20,29 @@ export default function HomePage() {
               <div className="mx-auto max-w-3xl text-center">
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
                   <Heart className="h-4 w-4 fill-current" />
-                  Fighting hunger together
+                  Combatendo a fome juntos
                 </div>
 
                 <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance md:text-6xl">
-                  Transform surplus into hope
+                  Transforme excedentes em esperança
                 </h1>
 
                 <p className="mb-8 text-lg text-muted-foreground text-pretty leading-relaxed md:text-xl">
-                  We connect people, restaurants and supermarkets with surplus food to shelters, NGOs and families in need.
+                  Conectamos pessoas, restaurantes e supermercados com excedentes alimentares a abrigos, ONGs e famílias
+                  em necessidade.
                 </p>
 
                 <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Button asChild size="lg" className="text-base">
-                    <Link href="/register">
-                      Start Donating
+                    <Link href="/registro">
+                      Começar a Doar
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </Button>
                   <Button asChild size="lg" variant="outline" className="text-base bg-transparent">
-                    <Link href="/map">
+                    <Link href="/mapa">
                       <MapPin className="mr-2 h-5 w-5" />
-                      View Donation Map
+                      Ver Mapa de Doações
                     </Link>
                   </Button>
                 </div>
@@ -55,19 +56,19 @@ export default function HomePage() {
               <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
                 <div className="text-center">
                   <div className="mb-2 text-3xl font-bold text-primary md:text-4xl">1.2M+</div>
-                  <div className="text-sm text-muted-foreground">Meals Donated</div>
+                  <div className="text-sm text-muted-foreground">Refeições Doadas</div>
                 </div>
                 <div className="text-center">
                   <div className="mb-2 text-3xl font-bold text-primary md:text-4xl">850+</div>
-                  <div className="text-sm text-muted-foreground">Active Donors</div>
+                  <div className="text-sm text-muted-foreground">Doadores Ativos</div>
                 </div>
                 <div className="text-center">
                   <div className="mb-2 text-3xl font-bold text-primary md:text-4xl">320+</div>
-                  <div className="text-sm text-muted-foreground">Partner Shelters</div>
+                  <div className="text-sm text-muted-foreground">Abrigos Parceiros</div>
                 </div>
                 <div className="text-center">
                   <div className="mb-2 text-3xl font-bold text-primary md:text-4xl">45</div>
-                  <div className="text-sm text-muted-foreground">Cities Served</div>
+                  <div className="text-sm text-muted-foreground">Cidades Atendidas</div>
                 </div>
               </div>
             </div>
@@ -77,9 +78,9 @@ export default function HomePage() {
           <section className="py-20">
             <div className="container">
               <div className="mb-12 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">How it works</h2>
+                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">Como funciona</h2>
                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground text-pretty leading-relaxed">
-                  A simple and efficient platform to connect those who can donate with those in need
+                  Uma plataforma simples e eficiente para conectar quem pode doar com quem precisa
                 </p>
               </div>
 
@@ -89,9 +90,10 @@ export default function HomePage() {
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                       <Heart className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="mb-2 text-xl font-semibold">Register your donation</h3>
+                    <h3 className="mb-2 text-xl font-semibold">Cadastre sua doação</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      Restaurants, supermarkets and individuals can register available food for donation quickly and easily.
+                      Restaurantes, supermercados e pessoas físicas podem cadastrar alimentos disponíveis para doação de
+                      forma rápida e fácil.
                     </p>
                   </CardContent>
                 </Card>
@@ -101,9 +103,10 @@ export default function HomePage() {
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10">
                       <MapPin className="h-6 w-6 text-secondary" />
                     </div>
-                    <h3 className="mb-2 text-xl font-semibold">Find nearby donations</h3>
+                    <h3 className="mb-2 text-xl font-semibold">Encontre doações próximas</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      Shelters and NGOs view available donations on an interactive map, filtering by food type and distance.
+                      Abrigos e ONGs visualizam doações disponíveis em um mapa interativo, filtrando por tipo de
+                      alimento e distância.
                     </p>
                   </CardContent>
                 </Card>
@@ -113,9 +116,9 @@ export default function HomePage() {
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
                       <CheckCircle className="h-6 w-6 text-accent" />
                     </div>
-                    <h3 className="mb-2 text-xl font-semibold">Reserve and collect</h3>
+                    <h3 className="mb-2 text-xl font-semibold">Reserve e colete</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      Reserve the donation with one click and coordinate collection directly with the donor through the platform.
+                      Reserve a doação com um clique e coordene a coleta diretamente com o doador através da plataforma.
                     </p>
                   </CardContent>
                 </Card>
@@ -128,14 +131,14 @@ export default function HomePage() {
             <div className="container">
               <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
                 <div>
-                  <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">For donors</h2>
+                  <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">Para doadores</h2>
                   <ul className="space-y-4">
                     {[
-                      "Reduce food waste",
-                      "Contribute to your community",
-                      "Simple and fast process",
-                      "Track the impact of your donations",
-                      "Tax incentives for businesses",
+                      "Reduza o desperdício de alimentos",
+                      "Contribua para sua comunidade",
+                      "Processo simples e rápido",
+                      "Acompanhe o impacto das suas doações",
+                      "Incentivos fiscais para empresas",
                     ].map((benefit, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
@@ -144,19 +147,19 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Button asChild size="lg" className="mt-8">
-                    <Link href="/register">Start Donating</Link>
+                    <Link href="/registro">Começar a Doar</Link>
                   </Button>
                 </div>
 
                 <div>
-                  <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">For shelters and NGOs</h2>
+                  <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">Para abrigos e ONGs</h2>
                   <ul className="space-y-4">
                     {[
-                      "Free access to quality food",
-                      "Real-time donation viewing",
-                      "Simple reservation system",
-                      "New donation notifications",
-                      "Dedicated support for organizations",
+                      "Acesso gratuito a alimentos de qualidade",
+                      "Visualização em tempo real de doações",
+                      "Sistema de reserva simples",
+                      "Notificações de novas doações",
+                      "Suporte dedicado para organizações",
                     ].map((benefit, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-secondary" />
@@ -165,7 +168,7 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Button asChild size="lg" variant="secondary" className="mt-8">
-                    <Link href="/register">Register Organization</Link>
+                    <Link href="/registro">Cadastrar Organização</Link>
                   </Button>
                 </div>
               </div>
@@ -180,17 +183,17 @@ export default function HomePage() {
                   <div className="mx-auto max-w-2xl text-center">
                     <TrendingUp className="mx-auto mb-6 h-12 w-12 text-primary" />
                     <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
-                      Be part of this transformation
+                      Faça parte dessa transformação
                     </h2>
                     <p className="mb-8 text-lg text-muted-foreground text-pretty leading-relaxed">
-                      Join thousands of people and organizations already making a difference in the fight against hunger.
+                      Junte-se a milhares de pessoas e organizações que já estão fazendo a diferença no combate à fome.
                     </p>
                     <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                       <Button asChild size="lg">
-                        <Link href="/register">Create Free Account</Link>
+                        <Link href="/registro">Criar Conta Gratuita</Link>
                       </Button>
                       <Button asChild size="lg" variant="outline">
-                        <Link href="/about">Learn More</Link>
+                        <Link href="/sobre">Saiba Mais</Link>
                       </Button>
                     </div>
                   </div>
