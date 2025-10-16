@@ -262,7 +262,7 @@ export default function MapPage() {
                               </div>
                               <div className="flex items-center gap-1">
                                 <Calendar className="h-3 w-3" />
-                                <span>Validade: {new Date(donation.expiryDate).toLocaleDateString("pt-BR")}</span>
+                                <span>Validade: {new Date(donation.expiryDate).toLocaleDateString("en-EN")}</span>
                               </div>
                             </div>
                           </div>
