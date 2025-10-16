@@ -47,13 +47,13 @@ function ProfileContent() {
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       toast({
-        title: "Perfil atualizado!",
-        description: "Suas informações foram salvas com sucesso.",
+        title: "Profile updated!",
+        description: "Your information has been saved successfully.",
       })
     } catch (error) {
       toast({
-        title: "Erro ao atualizar perfil",
-        description: "Tente novamente mais tarde.",
+        title: "Error updating profile",
+        description: "Please try again later.",
         variant: "destructive",
       })
     } finally {
@@ -74,7 +74,7 @@ function ProfileContent() {
           <Button variant="ghost" asChild className="mb-6">
             <Link href="/dashboard">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Voltar para dashboard
+              Back to dashboard
             </Link>
           </Button>
 
@@ -83,8 +83,8 @@ function ProfileContent() {
             <div className="lg:col-span-1">
               <Card>
                 <CardHeader>
-                  <CardTitle>Foto de Perfil</CardTitle>
-                  <CardDescription>Atualize sua foto de perfil</CardDescription>
+                  <CardTitle>Profile Picture</CardTitle>
+                  <CardDescription>Update your profile picture</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex flex-col items-center gap-4">
@@ -94,20 +94,20 @@ function ProfileContent() {
                     </Avatar>
                     <Button variant="outline" className="w-full bg-transparent">
                       <Camera className="mr-2 h-4 w-4" />
-                      Alterar Foto
+                      Change Photo
                     </Button>
                   </div>
                   <Separator />
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">Tipo de conta</span>
+                      <span className="text-muted-foreground">Account type</span>
                       <Badge variant="secondary" className="capitalize">
-                        {user.role === "doador" ? "Doador" : "Abrigo/ONG"}
+                        {user.role === "donor" ? "Donor" : "Shelter/NGO"}
                       </Badge>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">Membro desde</span>
-                      <span className="font-medium">Out 2025</span>
+                      <span className="text-muted-foreground">Member since</span>
+                      <span className="font-medium">Oct 2025</span>
                     </div>
                   </div>
                 </CardContent>
@@ -118,18 +118,18 @@ function ProfileContent() {
             <div className="lg:col-span-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>Informações Pessoais</CardTitle>
-                  <CardDescription>Atualize suas informações de perfil</CardDescription>
+                  <CardTitle>Personal Information</CardTitle>
+                  <CardDescription>Update your profile information</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Nome Completo</Label>
+                      <Label htmlFor="name">Full Name</Label>
                       <div className="relative">
                         <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         <Input
                           id="name"
-                          placeholder="Seu nome completo"
+                          placeholder="Your full name"
                           value={formData.name}
                           onChange={(e) => handleChange("name", e.target.value)}
                           disabled={isLoading}
@@ -139,13 +139,13 @@ function ProfileContent() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">E-mail</Label>
+                      <Label htmlFor="email">Email</Label>
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         <Input
                           id="email"
                           type="email"
-                          placeholder="seu@email.com"
+                          placeholder="your@email.com"
                           value={formData.email}
                           onChange={(e) => handleChange("email", e.target.value)}
                           disabled={isLoading}
@@ -155,12 +155,12 @@ function ProfileContent() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="location">Localização</Label>
+                      <Label htmlFor="location">Location</Label>
                       <div className="relative">
                         <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         <Input
                           id="location"
-                          placeholder="Cidade, Estado"
+                          placeholder="City, State"
                           value={formData.location}
                           onChange={(e) => handleChange("location", e.target.value)}
                           disabled={isLoading}
@@ -170,7 +170,7 @@ function ProfileContent() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Telefone (opcional)</Label>
+                      <Label htmlFor="phone">Phone (optional)</Label>
                       <Input
                         id="phone"
                         type="tel"
@@ -182,13 +182,13 @@ function ProfileContent() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="bio">Sobre {user.role === "doador" ? "você" : "sua organização"}</Label>
+                      <Label htmlFor="bio">About {user.role === "donor" ? "you" : "your organization"}</Label>
                       <Textarea
                         id="bio"
                         placeholder={
-                          user.role === "doador"
-                            ? "Conte um pouco sobre você e por que você doa..."
-                            : "Descreva sua organização e o trabalho que realiza..."
+                          user.role === "donor"
+                            ? "Tell us a bit about yourself and why you donate..."
+                            : "Describe your organization and the work you do..."
                         }
                         value={formData.bio}
                         onChange={(e) => handleChange("bio", e.target.value)}
@@ -207,16 +207,16 @@ function ProfileContent() {
                         className="flex-1 bg-transparent"
                         disabled={isLoading}
                       >
-                        <Link href="/dashboard">Cancelar</Link>
+                        <Link href="/dashboard">Cancel</Link>
                       </Button>
                       <Button type="submit" className="flex-1" disabled={isLoading}>
                         {isLoading ? (
                           <>
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Salvando...
+                            Saving...
                           </>
                         ) : (
-                          "Salvar Alterações"
+                          "Save Changes"
                         )}
                       </Button>
                     </div>

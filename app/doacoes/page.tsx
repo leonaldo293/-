@@ -17,29 +17,29 @@ import Link from "next/link"
 function DonationsContent() {
   const [donations, setDonations] = useState<Donation[]>(mockDonations)
   const [searchQuery, setSearchQuery] = useState("")
-  const [categoryFilter, setCategoryFilter] = useState<string>("todas")
-  const [statusFilter, setStatusFilter] = useState<string>("todas")
+  const [categoryFilter, setCategoryFilter] = useState<string>("all")
+  const [statusFilter, setStatusFilter] = useState<string>("all")
 
   const filteredDonations = donations.filter((donation) => {
     const matchesSearch =
       donation.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       donation.location.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCategory = categoryFilter === "todas" || donation.category === categoryFilter
-    const matchesStatus = statusFilter === "todas" || donation.status === statusFilter
+    const matchesCategory = categoryFilter === "all" || donation.category === categoryFilter
+    const matchesStatus = statusFilter === "all" || donation.status === statusFilter
     return matchesSearch && matchesCategory && matchesStatus
   })
 
   const getStatusBadge = (status: Donation["status"]) => {
     const variants = {
-      disponivel: "default",
-      reservado: "secondary",
-      coletado: "outline",
+      available: "default",
+      reserved: "secondary",
+      collected: "outline",
     } as const
 
     const labels = {
-      disponivel: "Disponível",
-      reservado: "Reservado",
-      coletado: "Coletado",
+      available: "Available",
+      reserved: "Reserved",
+      collected: "Collected",
     }
 
     return (
@@ -57,9 +57,9 @@ function DonationsContent() {
         <div className="container mx-auto max-w-7xl">
           {/* Header Section */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-balance mb-3">Doações Disponíveis</h1>
+            <h1 className="text-4xl font-bold text-balance mb-3">Available Donations</h1>
             <p className="text-lg text-muted-foreground text-pretty">
-              Encontre alimentos disponíveis para doação na sua região
+              Find food available for donation in your region
             </p>
           </div>
 
@@ -70,7 +70,7 @@ function DonationsContent() {
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
-                    placeholder="Buscar por nome ou localização..."
+                    placeholder="Search by name or location..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-9"
@@ -78,17 +78,17 @@ function DonationsContent() {
                 </div>
                 <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Categoria" />
+                    <SelectValue placeholder="Category" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="todas">Todas as categorias</SelectItem>
-                    <SelectItem value="frutas">Frutas</SelectItem>
-                    <SelectItem value="vegetais">Vegetais</SelectItem>
-                    <SelectItem value="graos">Grãos</SelectItem>
-                    <SelectItem value="laticinios">Laticínios</SelectItem>
-                    <SelectItem value="proteinas">Proteínas</SelectItem>
-                    <SelectItem value="padaria">Padaria</SelectItem>
-                    <SelectItem value="outros">Outros</SelectItem>
+                    <SelectItem value="all">All categories</SelectItem>
+                    <SelectItem value="fruits">Fruits</SelectItem>
+                    <SelectItem value="vegetables">Vegetables</SelectItem>
+                    <SelectItem value="grains">Grains</SelectItem>
+                    <SelectItem value="dairy">Dairy</SelectItem>
+                    <SelectItem value="proteins">Proteins</SelectItem>
+                    <SelectItem value="bakery">Bakery</SelectItem>
+                    <SelectItem value="others">Others</SelectItem>
                   </SelectContent>
                 </Select>
                 <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -96,10 +96,10 @@ function DonationsContent() {
                     <SelectValue placeholder="Status" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="todas">Todos os status</SelectItem>
-                    <SelectItem value="disponivel">Disponível</SelectItem>
-                    <SelectItem value="reservado">Reservado</SelectItem>
-                    <SelectItem value="coletado">Coletado</SelectItem>
+                    <SelectItem value="all">All status</SelectItem>
+                    <SelectItem value="available">Available</SelectItem>
+                    <SelectItem value="reserved">Reserved</SelectItem>
+                    <SelectItem value="collected">Collected</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -109,10 +109,10 @@ function DonationsContent() {
           {/* Results Count */}
           <div className="mb-6 flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
-              {filteredDonations.length} {filteredDonations.length === 1 ? "doação encontrada" : "doações encontradas"}
+              {filteredDonations.length} {filteredDonations.length === 1 ? "donation found" : "donations found"}
             </p>
             <Button asChild>
-              <Link href="/doacoes/nova">Nova Doação</Link>
+              <Link href="/donations/new">New Donation</Link>
             </Button>
           </div>
 
@@ -121,8 +121,8 @@ function DonationsContent() {
             <Card className="py-12">
               <CardContent className="text-center">
                 <Filter className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Nenhuma doação encontrada</h3>
-                <p className="text-muted-foreground">Tente ajustar os filtros ou buscar por outros termos</p>
+                <h3 className="text-lg font-semibold mb-2">No donations found</h3>
+                <p className="text-muted-foreground">Try adjusting the filters or search for other terms</p>
               </CardContent>
             </Card>
           ) : (
@@ -156,20 +156,20 @@ function DonationsContent() {
                       </div>
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4 text-muted-foreground" />
-                        <span>Validade: {new Date(donation.expiryDate).toLocaleDateString("pt-BR")}</span>
+                        <span>Expiry: {new Date(donation.expiryDate).toLocaleDateString("en-US")}</span>
                       </div>
                     </div>
                     <div>
                       <Badge variant="secondary">{categoryLabels[donation.category]}</Badge>
                     </div>
                     {donation.reservedBy && (
-                      <p className="text-sm text-muted-foreground">Reservado por: {donation.reservedBy}</p>
+                      <p className="text-sm text-muted-foreground">Reserved by: {donation.reservedBy}</p>
                     )}
                   </CardContent>
                   <CardFooter>
-                    <Button asChild className="w-full" disabled={donation.status !== "disponivel"}>
-                      <Link href={`/doacoes/${donation.id}`}>
-                        {donation.status === "disponivel" ? "Ver Detalhes" : "Indisponível"}
+                    <Button asChild className="w-full" disabled={donation.status !== "available"}>
+                      <Link href={`/donations/${donation.id}`}>
+                        {donation.status === "available" ? "View Details" : "Unavailable"}
                       </Link>
                     </Button>
                   </CardFooter>

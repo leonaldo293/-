@@ -21,10 +21,10 @@ export function Header() {
   const { user, logout } = useAuth()
 
   const navigation = [
-    { name: "Início", href: "/" },
-    { name: "Doações", href: "/doacoes" },
-    { name: "Mapa", href: "/mapa" },
-    { name: "Sobre", href: "/sobre" },
+    { name: "Home", href: "/" },
+    { name: "Donations", href: "/donations" },
+    { name: "Map", href: "/map" },
+    { name: "About", href: "/about" },
   ]
 
   return (
@@ -58,7 +58,7 @@ export function Header() {
           {user ? (
             <>
               <Button asChild variant="default" className="hidden sm:flex">
-                <Link href="/doacoes/nova">Nova Doação</Link>
+                <Link href="/donations/new">New Donation</Link>
               </Button>
 
               <DropdownMenu>
@@ -85,15 +85,15 @@ export function Header() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/perfil" className="cursor-pointer">
+                    <Link href="/profile" className="cursor-pointer">
                       <User className="mr-2 h-4 w-4" />
-                      Perfil
+                      Profile
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={logout} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
-                    Sair
+                    Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -101,10 +101,10 @@ export function Header() {
           ) : (
             <>
               <Button asChild variant="ghost" className="hidden sm:flex">
-                <Link href="/login">Entrar</Link>
+                <Link href="/login">Login</Link>
               </Button>
               <Button asChild variant="default">
-                <Link href="/registro">Começar</Link>
+                <Link href="/register">Get Started</Link>
               </Button>
             </>
           )}

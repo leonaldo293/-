@@ -12,31 +12,31 @@ export default function AboutPage() {
   const values = [
     {
       icon: Heart,
-      title: "Solidariedade",
-      description: "Acreditamos no poder da comunidade para combater a fome e o desperdício de alimentos.",
+      title: "Solidarity",
+      description: "We believe in the power of community to fight hunger and food waste.",
     },
     {
       icon: Leaf,
-      title: "Sustentabilidade",
-      description: "Reduzimos o desperdício de alimentos e o impacto ambiental através da redistribuição.",
+      title: "Sustainability",
+      description: "We reduce food waste and environmental impact through redistribution.",
     },
     {
       icon: Users,
-      title: "Inclusão",
-      description: "Conectamos pessoas, empresas e organizações em prol de um objetivo comum.",
+      title: "Inclusion",
+      description: "We connect people, businesses and organizations for a common goal.",
     },
     {
       icon: Target,
-      title: "Transparência",
-      description: "Mantemos processos claros e rastreáveis para garantir confiança e eficiência.",
+      title: "Transparency",
+      description: "We maintain clear and traceable processes to ensure trust and efficiency.",
     },
   ]
 
   const stats = [
-    { value: "10.000+", label: "Kg de alimentos doados" },
-    { value: "500+", label: "Doadores ativos" },
-    { value: "150+", label: "ONGs e abrigos parceiros" },
-    { value: "30.000+", label: "Pessoas impactadas" },
+    { value: "10,000+", label: "Kg of food donated" },
+    { value: "500+", label: "Active donors" },
+    { value: "150+", label: "Partner NGOs and shelters" },
+    { value: "30,000+", label: "People impacted" },
   ]
 
   return (
@@ -51,11 +51,11 @@ export default function AboutPage() {
               <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary mb-6">
                 <Heart className="h-8 w-8 text-primary-foreground fill-current" />
               </div>
-              <h1 className="text-5xl font-bold text-balance mb-6">Sobre o Food Share</h1>
+              <h1 className="text-5xl font-bold text-balance mb-6">About Food Share</h1>
               <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
-                Somos uma plataforma de solidariedade que conecta pessoas, restaurantes e supermercados com excedente de
-                alimentos a abrigos, ONGs e famílias em situação de vulnerabilidade. Nossa missão é combater a fome e
-                reduzir o desperdício de alimentos através da tecnologia e da colaboração comunitária.
+                We are a solidarity platform that connects people, restaurants and supermarkets with surplus food to 
+                shelters, NGOs and families in vulnerable situations. Our mission is to fight hunger and reduce food 
+                waste through technology and community collaboration.
               </p>
             </div>
           </section>
@@ -79,21 +79,21 @@ export default function AboutPage() {
             <div className="container mx-auto max-w-6xl">
               <div className="grid gap-12 lg:grid-cols-2 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold text-balance mb-6">Nossa Missão</h2>
+                  <h2 className="text-3xl font-bold text-balance mb-6">Our Mission</h2>
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      O Food Share nasceu da necessidade de criar uma ponte entre quem tem alimentos em excesso e quem
-                      precisa deles. No Brasil, milhões de toneladas de alimentos são desperdiçadas anualmente, enquanto
-                      milhões de pessoas passam fome.
+                      Food Share was born from the need to create a bridge between those who have excess food and those 
+                      who need it. In Brazil, millions of tons of food are wasted annually, while millions of people 
+                      go hungry.
                     </p>
                     <p>
-                      Nossa plataforma facilita a doação de alimentos de forma rápida, segura e eficiente, utilizando
-                      tecnologia de geolocalização para conectar doadores e beneficiários próximos, reduzindo o tempo de
-                      transporte e garantindo a qualidade dos alimentos.
+                      Our platform facilitates food donation quickly, safely and efficiently, using geolocation 
+                      technology to connect nearby donors and beneficiaries, reducing transport time and ensuring 
+                      food quality.
                     </p>
                     <p>
-                      Acreditamos que juntos podemos construir uma sociedade mais justa e sustentável, onde nenhum
-                      alimento seja desperdiçado e nenhuma pessoa passe fome.
+                      We believe that together we can build a fairer and more sustainable society, where no food is 
+                      wasted and no one goes hungry.
                     </p>
                   </div>
                 </div>
@@ -104,10 +104,9 @@ export default function AboutPage() {
                         <Award className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-2">Impacto Social</h3>
+                        <h3 className="font-semibold mb-2">Social Impact</h3>
                         <p className="text-sm text-muted-foreground">
-                          Cada doação representa refeições para famílias em situação de vulnerabilidade e redução do
-                          desperdício.
+                          Each donation represents meals for families in vulnerable situations and reduction of waste.
                         </p>
                       </div>
                     </CardContent>
@@ -118,10 +117,9 @@ export default function AboutPage() {
                         <TrendingUp className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-2">Crescimento Sustentável</h3>
+                        <h3 className="font-semibold mb-2">Sustainable Growth</h3>
                         <p className="text-sm text-muted-foreground">
-                          Expandimos nossa rede de doadores e beneficiários continuamente, aumentando nosso impacto
-                          positivo.
+                          We continuously expand our network of donors and beneficiaries, increasing our positive impact.
                         </p>
                       </div>
                     </CardContent>
@@ -135,9 +133,9 @@ export default function AboutPage() {
           <section className="py-20 px-4 bg-muted/30">
             <div className="container mx-auto max-w-6xl">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-balance mb-4">Nossos Valores</h2>
+                <h2 className="text-3xl font-bold text-balance mb-4">Our Values</h2>
                 <p className="text-lg text-muted-foreground text-pretty">
-                  Os princípios que guiam nosso trabalho e nossa comunidade
+                  The principles that guide our work and our community
                 </p>
               </div>
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -161,14 +159,14 @@ export default function AboutPage() {
             <div className="container mx-auto max-w-4xl">
               <Card className="bg-primary text-primary-foreground">
                 <CardContent className="p-12 text-center">
-                  <h2 className="text-3xl font-bold text-balance mb-4">Faça Parte Dessa Mudança</h2>
+                  <h2 className="text-3xl font-bold text-balance mb-4">Be Part of This Change</h2>
                   <p className="text-lg text-primary-foreground/90 text-pretty mb-8">
-                    Junte-se a milhares de pessoas e organizações que estão fazendo a diferença no combate à fome e ao
-                    desperdício de alimentos.
+                    Join thousands of people and organizations making a difference in the fight against hunger and 
+                    food waste.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button size="lg" variant="secondary" asChild>
-                      <Link href="/registro">Começar Agora</Link>
+                      <Link href="/register">Get Started Now</Link>
                     </Button>
                     <Button
                       size="lg"
@@ -176,7 +174,7 @@ export default function AboutPage() {
                       asChild
                       className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
                     >
-                      <Link href="/doacoes">Ver Doações</Link>
+                      <Link href="/donations">View Donations</Link>
                     </Button>
                   </div>
                 </CardContent>

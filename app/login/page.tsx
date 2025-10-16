@@ -30,14 +30,14 @@ function LoginForm() {
     try {
       await login(email, password)
       toast({
-        title: "Login realizado com sucesso!",
-        description: "Bem-vindo de volta ao Food Share.",
+        title: "Login successful!",
+        description: "Welcome back to Food Share.",
       })
       router.push("/dashboard")
     } catch (error) {
       toast({
-        title: "Erro ao fazer login",
-        description: "Verifique suas credenciais e tente novamente.",
+        title: "Login error",
+        description: "Please check your credentials and try again.",
         variant: "destructive",
       })
     } finally {
@@ -55,17 +55,17 @@ function LoginForm() {
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
               <Heart className="h-7 w-7 text-primary-foreground fill-current" />
             </div>
-            <CardTitle className="text-2xl font-bold">Entrar no Food Share</CardTitle>
-            <CardDescription>Entre com sua conta para continuar doando ou recebendo alimentos</CardDescription>
+            <CardTitle className="text-2xl font-bold">Login to Food Share</CardTitle>
+            <CardDescription>Sign in to your account to continue donating or receiving food</CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">E-mail</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="seu@email.com"
+                  placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -74,9 +74,9 @@ function LoginForm() {
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Senha</Label>
+                  <Label htmlFor="password">Password</Label>
                   <Link href="#" className="text-sm text-primary hover:underline">
-                    Esqueceu a senha?
+                    Forgot password?
                   </Link>
                 </div>
                 <Input
@@ -95,16 +95,16 @@ function LoginForm() {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Entrando...
+                    Signing in...
                   </>
                 ) : (
-                  "Entrar"
+                  "Sign In"
                 )}
               </Button>
               <p className="text-center text-sm text-muted-foreground">
-                Não tem uma conta?{" "}
-                <Link href="/registro" className="text-primary hover:underline font-medium">
-                  Cadastre-se gratuitamente
+                Don't have an account?{" "}
+                <Link href="/register" className="text-primary hover:underline font-medium">
+                  Sign up for free
                 </Link>
               </p>
             </CardFooter>

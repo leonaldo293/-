@@ -14,26 +14,26 @@ export function Footer() {
               <span className="text-xl font-bold">Food Share</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Conectando doadores a quem precisa, combatendo a fome com solidariedade.
+              Connecting donors with those in need, fighting hunger with solidarity.
             </p>
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Navegação</h3>
+            <h3 className="mb-4 text-sm font-semibold">Navigation</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
-                  Início
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="/doacoes" className="text-muted-foreground hover:text-primary transition-colors">
-                  Doações
+                <Link href="/donations" className="text-muted-foreground hover:text-primary transition-colors">
+                  Donations
                 </Link>
               </li>
               <li>
-                <Link href="/sobre" className="text-muted-foreground hover:text-primary transition-colors">
-                  Sobre
+                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                  About
                 </Link>
               </li>
               <li>
@@ -49,43 +49,43 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Termos de Uso
+                  Terms of Use
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Política de Privacidade
+                  Privacy Policy
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Diretrizes
+                  Guidelines
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Contato</h3>
+            <h3 className="mb-4 text-sm font-semibold">Contact</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                contato@foodshare.com
+                contact@foodshare.com
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                (11) 9999-9999
+                +234 901 234 5678
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                São Paulo, SP
+                Lagos, Nigeria
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2025 Food Share. Todos os direitos reservados.</p>
+          <p>© 2025 Food Share. All rights reserved.</p>
         </div>
       </div>
     </footer>

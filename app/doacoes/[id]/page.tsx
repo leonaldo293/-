@@ -31,12 +31,12 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
         <main className="flex-1 flex items-center justify-center py-12 px-4">
           <Card className="max-w-md">
             <CardHeader>
-              <CardTitle>Doação não encontrada</CardTitle>
-              <CardDescription>A doação que você está procurando não existe ou foi removida.</CardDescription>
+              <CardTitle>Donation not found</CardTitle>
+              <CardDescription>The donation you're looking for doesn't exist or has been removed.</CardDescription>
             </CardHeader>
             <CardContent>
               <Button asChild className="w-full">
-                <Link href="/doacoes">Ver todas as doações</Link>
+                <Link href="/donations">View all donations</Link>
               </Button>
             </CardContent>
           </Card>
@@ -49,8 +49,8 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
   const handleReserve = async () => {
     if (!user) {
       toast({
-        title: "Login necessário",
-        description: "Você precisa estar logado para reservar uma doação.",
+        title: "Login required",
+        description: "You need to be logged in to reserve a donation.",
         variant: "destructive",
       })
       router.push("/login")
@@ -63,15 +63,15 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       toast({
-        title: "Doação reservada!",
-        description: "Entre em contato com o doador para combinar a coleta.",
+        title: "Donation reserved!",
+        description: "Contact the donor to arrange collection.",
       })
 
       router.push("/dashboard")
     } catch (error) {
       toast({
-        title: "Erro ao reservar",
-        description: "Tente novamente mais tarde.",
+        title: "Error reserving",
+        description: "Please try again later.",
         variant: "destructive",
       })
     } finally {
@@ -81,15 +81,15 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
 
   const getStatusBadge = (status: typeof donation.status) => {
     const variants = {
-      disponivel: "default",
-      reservado: "secondary",
-      coletado: "outline",
+      available: "default",
+      reserved: "secondary",
+      collected: "outline",
     } as const
 
     const labels = {
-      disponivel: "Disponível",
-      reservado: "Reservado",
-      coletado: "Coletado",
+      available: "Available",
+      reserved: "Reserved",
+      collected: "Collected",
     }
 
     return (
@@ -106,9 +106,9 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
       <main className="flex-1 py-12 px-4">
         <div className="container mx-auto max-w-4xl">
           <Button variant="ghost" asChild className="mb-6">
-            <Link href="/doacoes">
+            <Link href="/donations">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Voltar para doações
+              Back to donations
             </Link>
           </Button>
 
@@ -145,7 +145,7 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
                 <div className="flex items-center gap-3">
                   <Package className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Quantidade</p>
+                    <p className="text-sm text-muted-foreground">Quantity</p>
                     <p className="font-medium">{donation.quantity}</p>
                   </div>
                 </div>
@@ -153,27 +153,27 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
                 <div className="flex items-center gap-3">
                   <Calendar className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Data de Validade</p>
-                    <p className="font-medium">{new Date(donation.expiryDate).toLocaleDateString("pt-BR")}</p>
+                    <p className="text-sm text-muted-foreground">Expiry Date</p>
+                    <p className="font-medium">{new Date(donation.expiryDate).toLocaleDateString("en-US")}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <User className="h-5 w-5 text-muted-foreground" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Doador</p>
+                    <p className="text-sm text-muted-foreground">Donor</p>
                     <p className="font-medium">{donation.donorName}</p>
                   </div>
                 </div>
 
                 <div>
-                  <p className="text-sm text-muted-foreground mb-2">Categoria</p>
+                  <p className="text-sm text-muted-foreground mb-2">Category</p>
                   <Badge variant="secondary">{categoryLabels[donation.category]}</Badge>
                 </div>
 
                 {donation.reservedBy && (
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Reservado por</p>
+                    <p className="text-sm text-muted-foreground mb-1">Reserved by</p>
                     <p className="font-medium">{donation.reservedBy}</p>
                   </div>
                 )}
@@ -181,22 +181,22 @@ function DonationDetailContent({ params }: { params: Promise<{ id: string }> }) 
 
               <Separator />
 
-              {donation.status === "disponivel" ? (
+              {donation.status === "available" ? (
                 <Button onClick={handleReserve} disabled={isReserving} className="w-full" size="lg">
                   <Heart className="mr-2 h-5 w-5" />
-                  {isReserving ? "Reservando..." : "Reservar Doação"}
+                  {isReserving ? "Reserving..." : "Reserve Donation"}
                 </Button>
               ) : (
                 <Button disabled className="w-full" size="lg">
-                  Doação Indisponível
+                  Donation Unavailable
                 </Button>
               )}
 
               <Card className="bg-muted/50">
                 <CardContent className="pt-6">
                   <p className="text-sm text-muted-foreground">
-                    Ao reservar esta doação, você se compromete a coletar os alimentos no prazo combinado com o doador.
-                    Entre em contato através do dashboard após a reserva.
+                    By reserving this donation, you commit to collecting the food within the timeframe agreed with the donor.
+                    Contact them through the dashboard after reservation.
                   </p>
                 </CardContent>
               </Card>
