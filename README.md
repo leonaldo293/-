@@ -43,6 +43,44 @@
 ---
 
 ## How to Run the Project
+cd server
+npm install
+npm start
+Install dependencies and run backend:
+
+cd server
+npm install
+npm start
+
+
+In another terminal, run frontend:
+
+cd client
+npm install
+npm run dev
+
+
+Open your browser at http://localhost:3000 to test the application.
+
+Backend APIs are simulated with temporary data for full app functionality testing.
+
+Project Structure
+food-share/
+├─ client/          # React frontend
+├─ server/          # Node.js backend
+├─ README.md
+
+Contributors
+
+Leonaldo Mendes — Leonaldomendes293@gmail.com
+
+Isaac Moses — Isaacmoses11111@gmail.com
+
+Nwidee Ereyiga — nwideeereyiga@gmail.com
+
+Tijani Oluwaseun — tijanioluwaseun26@gmail.com
+
+Murangiri Brayan — Murangiri.brayan@gmail
 
 1. Clone the repository:
 
